@@ -1,90 +1,326 @@
 {% extends 'shop/base.html' %}
 {% block title %} Shop Home Page {% endblock %}
 {% block css %}
-		  .carousel-indicators{
-			  top:100%;
-		  }
-		  .carousel-indicators li{
-			  background-color:gray;
-		  }
-		  .carousel-control-prev-icon {
-			  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='red' viewBox='0 0 8 8'%3E%3Cpath d='M5.25 0l-4 4 4 4 1.5-1.5-2.5-2.5 2.5-2.5-1.5-1.5z'/%3E%3C/svg%3E") !important;
-		  }
-		  .carousel-control-next-icon {
-			  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='red' viewBox='0 0 8 8'%3E%3Cpath d='M2.75 0l-1.5 1.5 2.5 2.5-2.5 2.5 1.5 1.5 4-4-4-4z'/%3E%3C/svg%3E") !important;
-		  }
-		  section{
-			  padding:100px 0px;
-		  }
-		  .proname {
-			white-space: nowrap;
-			  width: 150px;
-			  overflow: hidden;
-			  text-overflow: ellipsis;
-          }
-		  .prodetails {
-			white-space: nowrap;
-			  width: 150px;
-			  overflow: hidden;
-			  text-overflow: ellipsis;
-          }
+	#myCarousel .carousel-item .mask {
+    position: absolute;
+    top: 0;
+	left:0;
+	height:100%;
+    width: 100%;
+    background-attachment: fixed;
+	}
+	#myCarousel h4{
+		font-size:50px;
+		margin-bottom:15px;
+		color:#FFF;
+		line-height:100%;
+		letter-spacing:0.5px;
+		font-weight:600;
+	}
+	#myCarousel p{
+		font-size:18px;
+		margin-bottom:15px;
+		color:#d5d5d5;
+	}
+	#myCarousel .carousel-item a{background:#F47735; font-size:14px; color:#FFF; padding:13px 32px; display:inline-block; }
+	#myCarousel .carousel-item a:hover{background:#394fa2; text-decoration:none;  }
+
+	#myCarousel .carousel-item h4{-webkit-animation-name:fadeInLeft; animation-name:fadeInLeft;}
+	#myCarousel .carousel-item p{-webkit-animation-name:slideInRight; animation-name:slideInRight;}
+	#myCarousel .carousel-item a{-webkit-animation-name:fadeInUp; animation-name:fadeInUp;}
+	#myCarousel .carousel-item .mask img{-webkit-animation-name:slideInRight; animation-name:slideInRight; display:block; height:auto; max-width:100%;}
+	#myCarousel h4, #myCarousel p, #myCarousel a, #myCarousel .carousel-item .mask img{-webkit-animation-duration: 1s;
+		animation-duration: 1.2s;
+		-webkit-animation-fill-mode: both;
+		animation-fill-mode: both;
+	}
+	#myCarousel .container {max-width: 1430px;  }
+	#myCarousel .carousel-item{height:100%; min-height:465px; }
+	#myCarousel{position:relative; z-index:1; background:url('/media/shop/images/yellow.jpg') center center no-repeat; background-size:cover; }
+
+	.carousel-control-next, .carousel-control-prev{height:40px; width:40px; padding:12px; top:50%; bottom:auto; transform:translateY(-50%); background-color: #f47735; }
+
+	.carousel-item {
+		position: relative;
+		display: none;
+		-webkit-box-align: center;
+		-ms-flex-align: center;
+		align-items: center;
+		width: 100%;
+		transition: -webkit-transform .6s ease;
+		transition: transform .6s ease;
+		transition: transform .6s ease,-webkit-transform .6s ease;
+		-webkit-backface-visibility: hidden;
+		backface-visibility: hidden;
+		-webkit-perspective: 1000px;
+		perspective: 1000px;
+	}
+	.carousel-fade .carousel-item {
+		opacity: 0;
+		-webkit-transition-duration: .6s;
+		transition-duration: .6s;
+		-webkit-transition-property: opacity;
+		transition-property: opacity
+	}
+	.carousel-fade .carousel-item-next.carousel-item-left, .carousel-fade .carousel-item-prev.carousel-item-right, .carousel-fade .carousel-item.active {
+		opacity: 1
+	}
+	.carousel-fade .carousel-item-left.active, .carousel-fade .carousel-item-right.active {
+		opacity: 0
+	}
+	.carousel-fade .carousel-item-left.active, .carousel-fade .carousel-item-next, .carousel-fade .carousel-item-prev, .carousel-fade .carousel-item-prev.active, .carousel-fade .carousel-item.active {
+		-webkit-transform: translateX(0);
+		-ms-transform: translateX(0);
+		transform: translateX(0)
+	}
+	@supports (transform-style:preserve-3d) {
+		.carousel-fade .carousel-item-left.active, .carousel-fade .carousel-item-next, .carousel-fade .carousel-item-prev, .carousel-fade .carousel-item-prev.active, .carousel-fade .carousel-item.active {
+		-webkit-transform:translate3d(0, 0, 0);
+		transform:translate3d(0, 0, 0)
+		}
+	}
+	.carousel-fade .carousel-item-left.active, .carousel-fade .carousel-item-next, .carousel-fade .carousel-item-prev, .carousel-fade .carousel-item-prev.active, .carousel-fade .carousel-item.active {
+		-webkit-transform: translate3d(0,0,0);
+		transform: translate3d(0,0,0);
+	}
+
+	@-webkit-keyframes fadeInLeft {
+	  from {
+		opacity: 0;
+		-webkit-transform: translate3d(-100%, 0, 0);
+		transform: translate3d(-100%, 0, 0);
+	  }
+
+	  to {
+		opacity: 1;
+		-webkit-transform: translate3d(0, 0, 0);
+		transform: translate3d(0, 0, 0);
+	  }
+	}
+
+	@keyframes fadeInLeft {
+	  from {
+		opacity: 0;
+		-webkit-transform: translate3d(-100%, 0, 0);
+		transform: translate3d(-100%, 0, 0);
+	  }
+
+	  to {
+		opacity: 1;
+		-webkit-transform: translate3d(0, 0, 0);
+		transform: translate3d(0, 0, 0);
+	  }
+	}
+
+	.fadeInLeft {
+	  -webkit-animation-name: fadeInLeft;
+	  animation-name: fadeInLeft;
+	}
+
+	@-webkit-keyframes fadeInUp {
+	  from {
+		opacity: 0;
+		-webkit-transform: translate3d(0, 100%, 0);
+		transform: translate3d(0, 100%, 0);
+	  }
+
+	  to {
+		opacity: 1;
+		-webkit-transform: translate3d(0, 0, 0);
+		transform: translate3d(0, 0, 0);
+	  }
+	}
+
+	@keyframes fadeInUp {
+	  from {
+		opacity: 0;
+		-webkit-transform: translate3d(0, 100%, 0);
+		transform: translate3d(0, 100%, 0);
+	  }
+
+	  to {
+		opacity: 1;
+		-webkit-transform: translate3d(0, 0, 0);
+		transform: translate3d(0, 0, 0);
+	  }
+	}
+
+	.fadeInUp {
+	  -webkit-animation-name: fadeInUp;
+	  animation-name: fadeInUp;
+	}
+
+	@-webkit-keyframes slideInRight {
+	  from {
+		-webkit-transform: translate3d(100%, 0, 0);
+		transform: translate3d(100%, 0, 0);
+		visibility: visible;
+	  }
+
+	  to {
+		-webkit-transform: translate3d(0, 0, 0);
+		transform: translate3d(0, 0, 0);
+	  }
+	}
+
+	@keyframes slideInRight {
+	  from {
+		-webkit-transform: translate3d(100%, 0, 0);
+		transform: translate3d(100%, 0, 0);
+		visibility: visible;
+	  }
+
+	  to {
+		-webkit-transform: translate3d(0, 0, 0);
+		transform: translate3d(0, 0, 0);
+	  }
+	}
+
+	.slideInRight {
+	  -webkit-animation-name: slideInRight;
+	  animation-name: slideInRight;
+	}
+
+	  .carousel-indicators{
+		  top:100%;
+	  }
+	  .carousel-indicators li{
+		  background-color:gray;
+	  }
+	  .carousel-control-prev-icon {
+		  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='red' viewBox='0 0 8 8'%3E%3Cpath d='M5.25 0l-4 4 4 4 1.5-1.5-2.5-2.5 2.5-2.5-1.5-1.5z'/%3E%3C/svg%3E") !important;
+	  }
+	  .carousel-control-next-icon {
+		  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='red' viewBox='0 0 8 8'%3E%3Cpath d='M2.75 0l-1.5 1.5 2.5 2.5-2.5 2.5 1.5 1.5 4-4-4-4z'/%3E%3C/svg%3E") !important;
+	  }
+	  section{
+		  padding:100px 0px;
+	  }
+	  .proname {
+		white-space: nowrap;
+		  width: 150px;
+		  overflow: hidden;
+		  text-overflow: ellipsis;
+	  }
+	  .prodetails {
+		white-space: nowrap;
+		  width: 150px;
+		  overflow: hidden;
+		  text-overflow: ellipsis;
+	  }
 {% endblock %}
 
 {% block body %}
   	{% load static %}
+<div id="myCarousel" class="carousel slide carousel-fade" data-ride="carousel">
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <div class="mask flex-center">
+        <div class="container">
+          <div class="row align-items-center">
+            <div class="col-md-7 col-12 order-md-1 order-2">
+              <h4>Stay home <br> Stay safe</h4>
+              <p>You’re braver than you believe and stronger than you seem, and smarter than you think - so follow guidelines and stay home to stay safe.</p>
+              <a href="#">BUY NOW</a> </div>
+            <div class="col-md-5 col-12 order-md-2 order-1"><img src='/media/shop/images/Covid-19.png' class="mx-auto" alt="slide"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="carousel-item">
+      <div class="mask flex-center">
+        <div class="container">
+          <div class="row align-items-center">
+            <div class="col-md-7 col-12 order-md-1 order-2">
+              <h4>Present your <br>
+                awesome product</h4>
+              <p>Lorem ipsum dolor sit amet. Reprehenderit, qui blanditiis quidem rerum <br>
+                necessitatibus praesentium voluptatum deleniti atque corrupti.</p>
+              <a href="#">BUY NOW</a> </div>
+            <div class="col-md-5 col-12 order-md-2 order-1"><img src='/media/shop/images/iphonewatch.jpg' class="mx-auto" alt="slide"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="carousel-item">
+      <div class="mask flex-center">
+        <div class="container">
+          <div class="row align-items-center">
+            <div class="col-md-7 col-12 order-md-1 order-2">
+              <h4>Present your <br>
+                awesome product</h4>
+              <p>Lorem ipsum dolor sit amet. Reprehenderit, qui blanditiis quidem rerum <br>
+                necessitatibus praesentium voluptatum deleniti atque corrupti.</p>
+              <a href="#">BUY NOW</a> </div>
+            <div class="col-md-5 col-12 order-md-2 order-1"><img src='/media/shop/images/duWgXRs.png' class="mx-auto" alt="slide"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="carousel-item">
+      <div class="mask flex-center">
+        <div class="container">
+          <div class="row align-items-center">
+            <div class="col-md-7 col-12 order-md-1 order-2">
+              <h4>Present your <br>
+                awesome product</h4>
+              <p>Lorem ipsum dolor sit amet. Reprehenderit, qui blanditiis quidem rerum <br>
+                necessitatibus praesentium voluptatum deleniti atque corrupti.</p>
+              <a href="#">BUY NOW</a> </div>
+            <div class="col-md-5 col-12 order-md-2 order-1"><img src='/media/shop/images/DGkR4OQ.png' class="mx-auto" alt="slide"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <a class="carousel-control-prev" href="#myCarousel" role="button" data-slide="prev"> <span class="carousel-control-prev-icon" aria-hidden="true"></span> <span class="sr-only">Previous</span> </a> <a class="carousel-control-next" href="#myCarousel" role="button" data-slide="next"> <span class="carousel-control-next-icon" aria-hidden="true"></span> <span class="sr-only">Next</span> </a> </div>
+<!--slide end-->
+
 	<div class="container mt-2 mb-3">
 		{% for product, range, nSlides in allProds  %}
-		<h4 class="my-4">{{product.0.category}}</h4>
-		  <div id="carouselSixColumn{{forloop.counter}}" class="carousel slide" data-ride="carousel">
-			  <ol class="carousel-indicators">
-				<li data-target="#carouselSixColumn{{forloop.counter}}" data-slide-to="0" class="active"></li>
-				  {% for i in range %}
-					<li data-target="#carouselSixColumn{{forloop.parentloop.counter}}" data-slide-to="{{ i }}"></li>
-				  {% endfor %}
-			  </ol>
-			  <div class="carousel-inner">
-				<div class="carousel-item active">
-					<div class="row">
-					  <div class="col-xl-2 p-1">
-						<div class="card">
-							<div class="container mt-2">
-							<img src='/media/{{product.0.image}}' class="w-100" height="150px">
+		  	<h4 class="my-4 text-default">{{product.0.category}}</h4>
+		  	<div id="carouselSixColumn{{forloop.counter}}" class="carousel slide" data-ride="carousel">
+				  <ol class="carousel-indicators">
+						<li data-target="#carouselSixColumn{{forloop.counter}}" data-slide-to="0" class="active"></li>
+						  {% for i in range %}
+							<li data-target="#carouselSixColumn{{forloop.parentloop.counter}}" data-slide-to="{{ i }}"></li>
+						  {% endfor %}
+				  </ol>
+				  <div class="carousel-inner">
+						<div class="carousel-item active">
+							<div class="row">
+								{% for i in product %}
+									  <div class="col-xl-2 p-1">
+											<div class="card">
+												  <div class="container mt-2">
+												    <img src='/media/{{i.image}}' class="w-100" height="150px">
+												  </div>
+												  <div class="card-body">
+													<h6 class="card-title proname">{{i.product_name}}</h6>
+													<p class="card-text prodetails">{{i.desc}}</p>
+													<button id="pr{{i.id}}" class="btn btn-outline-dark w-100 cart">Add Cart</button>
+												  </div>
+											</div>
+									  </div>
+									{% if forloop.counter|divisibleby:6 and forloop.counter > 0 and not forloop.last %}
 							</div>
-						  <div class="card-body">
-							<h6 class="card-title proname">{{product.0.product_name}}</h6>
-							<p class="card-text prodetails">{{product.0.desc}}</p>
-							<a href="#" class="btn btn-outline-dark w-100">Add Cart</a>
-						  </div>
 						</div>
-					  </div>
-						{% for i in product|slice:"1:" %}
-						  <div class="col-xl-2 p-1">
-							<div class="card">
-								<div class="container mt-2">
-								  <img src='/media/{{i.image}}' class="w-100" height="150px">
-								</div>
-							  <div class="card-body">
-								<h6 class="card-title proname">{{i.product_name}}</h6>
-								<p class="card-text prodetails">{{i.desc}}</p>
-								<a href="#" class="btn btn-outline-dark w-100">Add Cart</a>
-							  </div>
+					  	<div class="carousel-item">
+							<div class="row">
+									{% endif %}
+								{% endfor %}
 							</div>
-						  </div>
-						{% if forloop.counter|divisibleby:5 and forloop.counter > 0 and not forloop.last %}
-							</div></div><div class="carousel-item">
-						{% endif %}
-						{% endfor %}
-				</div>
-			  </div>
-			  <a class="carousel-control-prev" href="#carouselSixColumn{{forloop.counter}}" role="button" data-slide="prev">
-				<span class="carousel-control-prev-icon" aria-hidden="true"></span>
-				<span class="sr-only">Previous</span>
-			  </a>
-			  <a class="carousel-control-next" href="#carouselSixColumn{{forloop.counter}}" role="button" data-slide="next">
-				<span class="carousel-control-next-icon" aria-hidden="true"></span>
-				<span class="sr-only">Next</span>
-			  </a>
-			</div>
+						</div>
+				  </div>
+				  <a class="carousel-control-prev" href="#carouselSixColumn{{forloop.counter}}" role="button" data-slide="prev">
+					<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+					<span class="sr-only">Previous</span>
+				  </a>
+				  <a class="carousel-control-next" href="#carouselSixColumn{{forloop.counter}}" role="button" data-slide="next">
+					<span class="carousel-control-next-icon" aria-hidden="true"></span>
+					<span class="sr-only">Next</span>
+				  </a>
+		  	</div>
 		{% endfor %}
     </div>
 
@@ -159,4 +395,32 @@
             </div>
         </div>
     </div>
+{% endblock %}
+
+
+{% block js %}
+<script>
+console.log('working');
+if(localStorage.getItem('cart') == null) {
+	var cart = {};
+}else {
+	cart = JSON.parse(localStorage.getItem('cart'));
+}
+$('.cart').click(function(){
+	console.log('clicked');
+	var idstr = this.id.toString();
+	console.log(idstr);
+	if (cart[idstr] != undefined) {
+		cart[idstr] = cart[idstr] + 1;
+	}else {
+		cart[idstr] = 1;
+	}
+	console.log(cart);
+	localStorage.setItem('cart', JSON.stringify(cart));
+});
+
+ $('#myCarousel').carousel({
+    interval: 3000,
+ })
+</script>
 {% endblock %}
