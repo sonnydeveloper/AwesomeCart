@@ -295,12 +295,14 @@
 									  <div class="col-xl-2 p-1">
 											<div class="card">
 												  <div class="container mt-2">
-												    <img src='/media/{{i.image}}' class="w-100" height="150px">
+												    <img src='/media/{{i.image}}' class="w-100 align-items-center" height="150px">
 												  </div>
 												  <div class="card-body">
 													<h6 class="card-title proname">{{i.product_name}}</h6>
 													<p class="card-text prodetails">{{i.desc}}</p>
-													<button id="pr{{i.id}}" class="btn btn-outline-dark btn-sm cart">Add Cart</button>
+												 	<span id="divpr{{i.id}}" class="divpr">
+														<button id="pr{{i.id}}" class="btn btn-outline-dark btn-sm cart">Add Cart</button>
+													</span>
 													  <a href="/shop/products/{{i.id}}"><button id="qv{{i.id}}" class="btn btn-outline-dark btn-sm">View</button></a>
 												  </div>
 											</div>
