@@ -8,8 +8,46 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link href="https://raw.githubusercontent.com/daneden/animate.css/master/animate.css" rel="stylesheet">
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
     <title>{% block title %} {% endblock %}</title>
-    <style>{% block css %} {% endblock %} </style>
+    <style>{% block css %} {% endblock %}
+      .footer {
+    padding: 50px 0 20px 0;
+    background-color: #35404f;
+    color: #878c94;
+}
+.footer .title{text-align: left;color:#fff;font-size:25px;}
+
+
+.footer .social-icon{padding:0px;margin:0px;}
+.footer .social-icon a{display:inline-block;color:#fff;font-size:25px;padding:5px;}
+.footer .acount-icon a{display:block;color:#fff;font-size:18px;padding:5px;text-decoration:none;}
+.footer .acount-icon .fa{margin-right:25px;}
+
+
+.footer .category a {
+    text-decoration: none;
+    color: #fff;
+    display: inline-block;
+    padding: 5px 20px;
+    margin: 1px;
+    border-radius:4px;
+    margin-top: 6px;
+    background-color: black;
+    border: solid 1px #fff;
+}
+
+.footer .payment{margin:0px;padding:0px;list-style-type:none}
+.footer .payment li{list-style-type:none}
+.footer .payment li a {
+    text-decoration: none;
+    display: inline-block;
+    color: #fff;
+    float: left;
+    font-size: 25px;
+    padding: 10px 10px;
+}
+    </style>
   </head>
   <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -18,28 +56,149 @@
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav">
+        <ul class="navbar-nav mr-auto">
           <li class="nav-item active">
-            <a class="nav-link" href="/shop">Items <span class="sr-only">(current)</span></a>
+            <a class="nav-link" href="/shop/about">About Us<span class="sr-only">(current)</span></a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/shop">About Order</a>
+            <a class="nav-link" href="/shop/tracker">Tracker</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/shop/contact">Contact Us</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="/shop">Log-in/Sign-up</a>
           </li>
         </ul>
+        <form class="form-inline my-2 my-lg-0">
+          <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+        </form>
+        <button type="button" id="cartpop" class="btn btn-secondary btn-sm mx-2" data-container="body" data-toggle="popover" data-html="true"
+                data-placement="bottom" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus.">
+          Cart <span class="badge badge-light"><span id="cart">0</span></span>
+        </button>
       </div>
     </nav>
 
     {% block body %} {% endblock %}
+
+    <!--   FOOTER START================== -->
+    <footer class="footer">
+      <div class="container">
+          <div class="row">
+            <div class="col-sm-3">
+                <h4 class="title">Shop.in</h4>
+                <p>Shop.in is an Indian multinational conglomerate technology company based in New Delhi, with 750,000 employees. It focuses on e-commerce.</p>
+                <ul class="social-icon">
+                <a href="#" class="social"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+                <a href="#" class="social"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+                <a href="#" class="social"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+                <a href="#" class="social"><i class="fa fa-youtube-play" aria-hidden="true"></i></a>
+                <a href="#" class="social"><i class="fa fa-google" aria-hidden="true"></i></a>
+                <a href="#" class="social"><i class="fa fa-dribbble" aria-hidden="true"></i></a>
+                </ul>
+            </div>
+            <div class="col-sm-3">
+                <h4 class="title">My Account</h4>
+                <span class="acount-icon">
+                <a href="#"><i class="fa fa-heart" aria-hidden="true"></i> Wish List</a>
+                <a href="#"><i class="fa fa-cart-plus" aria-hidden="true"></i> Cart</a>
+                <a href="#"><i class="fa fa-user" aria-hidden="true"></i> Profile</a>
+                <a href="#"><i class="fa fa-globe" aria-hidden="true"></i> Language</a>
+              </span>
+            </div>
+            <div class="col-sm-3">
+                <h4 class="title">Category</h4>
+                <div class="category">
+                <a href="#">men</a>
+                <a href="#">women</a>
+                <a href="#">boy</a>
+                <a href="#">girl</a>
+                <a href="#">bag</a>
+                <a href="#">teshart</a>
+                <a href="#">top</a>
+                <a href="#">shos</a>
+                <a href="#">glass</a>
+                <a href="#">kit</a>
+                <a href="#">baby dress</a>
+                <a href="#">kurti</a>
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <h4 class="title">Payment Methods</h4>
+                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+                <ul class="payment">
+                <li><a href="#"><i class="fa fa-cc-amex" aria-hidden="true"></i></a></li>
+                <li><a href="#"><i class="fa fa-credit-card" aria-hidden="true"></i></a></li>
+                <li><a href="#"><i class="fa fa-paypal" aria-hidden="true"></i></a></li>
+                <li><a href="#"><i class="fa fa-cc-visa" aria-hidden="true"></i></a></li>
+                </ul>
+            </div>
+          </div>
+          <hr>
+          <div class="row text-center"> © 2017. Made with by Shop.in</div>
+      </div>
+    </footer>
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <script src="https://use.fontawesome.com/07b0ce5d10.js"></script>
+    <script>
+        if(sessionStorage.getItem('cart') == null){
+        var cart = {};
+        }
+        else
+        {
+        cart = JSON.parse(sessionStorage.getItem('cart'));
+        document.getElementById('cart').innerHTML = Object.keys(cart).length;
+        }
+        $('.cart').click(function(){
+        console.log('clicked');
+        var idstr = this.id.toString();
+        console.log(idstr);
+        if (cart[idstr] !=undefined){
+        cart[idstr] = cart[idstr] + 1;
+        }
+        else
+        {
+        cart[idstr] = 1;
+        }
+        console.log(cart);
+        sessionStorage.setItem('cart', JSON.stringify(cart));
+        document.getElementById('cart').innerHTML = Object.keys(cart).length;
+        });
 
+         $('#myCarousel').carousel({
+            interval: 3000,
+         })
+
+        $('#cartpop').popover();
+        document.getElementById("cartpop").serAttribute('data-content', '<h5>cart</h5>');
+
+       $(document).ready(function(){
+            $(".btn-minus").on("click",function(){
+                var now = $(".section > div > input").val();
+                if ($.isNumeric(now)){
+                    if (parseInt(now) -1 > 0){ now--;}
+                    $(".section > div > input").val(now);
+                }else{
+                    $(".section > div > input").val("1");
+                }
+            })
+            $(".btn-plus").on("click",function(){
+                var now = $(".section > div > input").val();
+                if ($.isNumeric(now)){
+                    $(".section > div > input").val(parseInt(now)+1);
+                }else{
+                    $(".section > div > input").val("1");
+                }
+            })
+        })
+    </script>
     {% block js %} {% endblock %}
   </body>
 </html>
