@@ -3,7 +3,7 @@
 {% block body %}
 <div class="container">
     <div class="col my-4">
-        <h2>Enter Your Order-Id and Email-Id To Track Your Order</h2>
+        <h1 class="lead"><strong>Enter Your Order-Id and Email-Id To Track Your Order.</strong></h1>
         <form method="POST" action="#" id="trackerForm">{% csrf_token %}
             <div class="form-row">
                 <div class="form-group col-md-5">
@@ -21,10 +21,10 @@
         </form>
     </div>
     <div class="col my-4">
-        <h2>Your Order Status</h2>
+        <h2 class="lead"><strong>Your Order Status.</strong></h2>
         <div class="my-4">
             <ul class="list-group" id="items">
-            	Enter your order Id and Email and click Track Order to find details about your order!
+            	<!--Enter your order Id and Email and click Track Order to find details about your order!-->
             </ul>
         </div>
     </div>
